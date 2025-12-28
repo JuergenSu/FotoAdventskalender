@@ -137,6 +137,7 @@ $hasOwnImage = participantImagePath($selectedDay, $token) !== null;
 $showGallery = $hasOwnImage || isAfterEnd($now);
 $dayImages = $showGallery ? listDayImages($selectedDay) : [];
 $theme = themeForDayRich($selectedDay);
+$missingLink = 'missing.php?' . http_build_query([TOKEN_PARAM => $token, DAY_PARAM => $selectedDay]);
 
 ?>
 <!doctype html>
@@ -195,7 +196,7 @@ $theme = themeForDayRich($selectedDay);
   <header>
     <div>
       <h1>Adventskalender Foto-Projekt <br/><span style="opacity:.6; font-weight:400;font-size:20px;color:#000;">(1.–24.&nbsp;Dez&nbsp;2025)</span></h1>
-      <div class="token">Teilnehmer: <span class="pill"><?php $tmp=$displayName; echo htmlspecialchars($tmp); ?></span></div>
+      <div class="token">Teilnehmer: <span class="pill"><?php $tmp=$displayName; echo htmlspecialchars($tmp); ?></span> <a class="pill" style="text-decoration:none;" href="<?=$missingLink?>">Tage-Uebersicht</a></div>
     </div>
     <div class="hint">
       <strong><?=$now->format('d.m.Y, H:i')?> Uhr</strong>
